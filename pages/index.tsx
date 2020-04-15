@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import { useApp } from '../overmind'
 
 export default () => {
+  const { state, actions } = useApp()
+
   return (
     <Layout>
       <div className='container'>
@@ -14,6 +17,9 @@ export default () => {
           <h1 className='title'>
             Welcome to <a href='https://nextjs.org'>Next.js!</a>
           </h1>
+
+          <h2>Count: {state.count}</h2>
+          <button onClick={actions.increaseCount}>click me</button>
         </main>
 
         <footer>
