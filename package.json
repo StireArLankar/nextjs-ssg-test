@@ -9,12 +9,14 @@
     "export": "next export"
   },
   "dependencies": {
+    "framer-motion": "^1.10.3",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.3.5",
     "overmind": "^23.0.1",
     "overmind-react": "^24.0.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-spring": "^8.0.27"
   },
   "devDependencies": {
     "@types/node": "^13.11.1",

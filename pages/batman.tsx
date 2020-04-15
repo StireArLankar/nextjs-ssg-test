@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import { NextPage, GetStaticProps } from 'next'
@@ -13,7 +12,7 @@ interface Props {
 }
 
 const Index: NextPage<Props> = (props) => (
-  <Layout>
+  <>
     <h1>Batman TV Shows</h1>
     <ul>
       {props.shows.map((show) => (
@@ -24,7 +23,7 @@ const Index: NextPage<Props> = (props) => (
         </li>
       ))}
     </ul>
-  </Layout>
+  </>
 )
 
 export const getStaticProps: GetStaticProps = async () => {

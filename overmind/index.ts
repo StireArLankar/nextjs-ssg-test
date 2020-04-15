@@ -19,7 +19,9 @@ export const config = merge(
 
 export const useApp = createHook<typeof config>()
 
-export const app = createOvermind(config)
+export const app = createOvermind(config, {
+  devtools: false,
+})
 
 declare module 'overmind' {
   interface Config extends IConfig<typeof config> {}

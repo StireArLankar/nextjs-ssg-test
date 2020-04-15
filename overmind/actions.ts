@@ -7,3 +7,7 @@ export const increaseCount: Action = ({ state }) => {
 export const decreaseCount: Action = ({ state }) => {
   state.count--
 }
+
+export const toggleActive: Action = ({ state }) => {
+  state.animated = !state.animated
+}

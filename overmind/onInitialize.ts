@@ -1,6 +1,6 @@
 import { OnInitialize, rehydrate } from 'overmind'
 
-export const onInitialize: OnInitialize = ({ state }, t) => {
+export const onInitialize: OnInitialize = ({ state }) => {
   if (typeof window !== 'undefined') {
     const mutations = (window as any).__OVERMIND_MUTATIONS
 

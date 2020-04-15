@@ -1,4 +1,3 @@
-import Layout from '../../components/Layout'
 import fetch from 'isomorphic-unfetch'
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
@@ -16,11 +15,11 @@ interface Props {
 
 const Post: NextPage<Props> = (props) => {
   return (
-    <Layout>
+    <>
       <h1>{props.show.name}</h1>
       <p>{props.show.summary.replace(/<[/]?[pb]>/g, '')}</p>
       {props.show.image ? <img src={props.show.image.medium} /> : null}
-    </Layout>
+    </>
   )
 }
 
