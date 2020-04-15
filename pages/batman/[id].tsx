@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 import fetch from 'isomorphic-unfetch'
-import { NextPage } from 'next'
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 
 interface Show {
   name: string
@@ -14,22 +14,30 @@ interface Props {
   show: Show
 }
 
-const Post: NextPage<Props> = (props) => (
-  <Layout>
-    <h1>{props.show.name}</h1>
-    <p>{props.show.summary.replace(/<[/]?[pb]>/g, '')}</p>
-    {props.show.image ? <img src={props.show.image.medium} /> : null}
-  </Layout>
-)
+const Post: NextPage<Props> = (props) => {
+  return (
+    <Layout>
+      <h1>{props.show.name}</h1>
+      <p>{props.show.summary.replace(/<[/]?[pb]>/g, '')}</p>
+      {props.show.image ? <img src={props.show.image.medium} /> : null}
+    </Layout>
+  )
+}
 
-Post.getInitialProps = async ({ query }) => {
-  const { id } = query
-  const res = await fetch(`https://api.tvmaze.com/shows/${id}`)
-  const show = (await res.json()) as Show
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+  const posts = await res.json()
 
-  console.log(`Fetched show: ${show.name}`)
+  const paths = posts.map((entry) => `/batman/${entry.show.id}`)
 
-  return { show }
+  return { paths, fallback: false }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const res = await fetch(`https://api.tvmaze.com/shows/${params.id}`)
+  const show = await res.json()
+
+  return { props: { show } }
 }
 
 export default Post
