@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatedDivs } from './AnimatedDivs'
+import Link from './Link'
 
 const linkStyle = {
   marginRight: 15,

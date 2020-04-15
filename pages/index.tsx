@@ -5,6 +5,7 @@ import { useApp } from '../overmind'
 import createStyles from '@material-ui/core/styles/createStyles'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import basePath from '../utils/basePath'
 
 export default () => {
   const { state, actions } = useApp()
@@ -17,7 +18,7 @@ export default () => {
     <div className={classes.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href={basePath('favicon.ico')} />
       </Head>
 
       <main>
@@ -37,7 +38,7 @@ export default () => {
           target='_blank'
           rel='noopener noreferrer'
         >
-          Powered by <img src='/zeit.svg' alt='ZEIT Logo' />
+          Powered by <img src={basePath('zeit.svg')} alt='ZEIT Logo' />
         </a>
       </footer>
     </div>

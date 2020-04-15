@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import { NextPage, GetStaticProps } from 'next'
+import Link from '../components/Link'
 
 interface Show {
   id: string
