@@ -2,14 +2,19 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 import { AnimatedDivs } from '../components/AnimatedDivs'
 import { useApp } from '../overmind'
+import createStyles from '@material-ui/core/styles/createStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 
 export default () => {
   const { state, actions } = useApp()
 
   useEffect(actions.toggleActive, [actions])
 
+  const classes = useStyles()
+
   return (
-    <div className='container'>
+    <div className={classes.container}>
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
@@ -38,3 +43,11 @@ export default () => {
     </div>
   )
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      padding: theme.spacing(2),
+    },
+  })
+)
